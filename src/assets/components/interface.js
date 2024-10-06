@@ -1,19 +1,39 @@
 import taskList from './createTasksList';
 import '../styles/taskList.css';
+import Task from "./createTask";
 
 const taskLists = [];
+let currentTask = 0;
 
-class Interface{
-    static createTaskListBtn(){
+class createTaskBtn{
+    static createBtn(){
+        const btn = document.createElement('button');
+        btn.innerText = 'Add Task';
+        btn.onclick = () => {
+            const newTask = new Task('name', '2', '3', '4');
+            taskLists[currentTask].addTask(newTask);
+        }
+        return btn;
+    }
+
+}
+class createTasksListBtn{
+    static createBtn(){
         const btn = document.createElement('button');
         btn.innerText = 'Add Tasks List';
         btn.onclick = () => {
-            const newTaskList = new taskList('name');
-            taskLists.push(newTaskList);
-            taskList.createTaskList(newTaskList);
+            taskList.createTaskList();
+            this.createNewTaskList();
+            console.log(taskLists)
         }
         document.body.appendChild(btn);
     }
+    static createNewTaskList(){
+        const newTaskList = new taskList('name');
+        taskLists.push(newTaskList);
+    }
 }
 
-Interface.createTaskListBtn();
+createTasksListBtn.createBtn();
+
+export {createTaskBtn};
