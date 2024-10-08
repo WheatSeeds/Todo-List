@@ -1,12 +1,13 @@
 import '../styles/taskList.css';
-import {tasksList, createTasksList} from "./createTasksList";
+import {createTasksList} from "./createTasksList";
 
 const taskLists = [];
 
 class createTasksListBtn{
     static createBtn(){
         const btn = document.createElement('button');
-        btn.innerText = 'Add Tasks List';
+        btn.setAttribute('id', 'new-tasks-list-button');
+        btn.innerText = 'New List +';
         btn.onclick = () => {
             this.createNewTaskList();
             console.log(taskLists);

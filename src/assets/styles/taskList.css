@@ -1,6 +1,49 @@
-div{
-    height: 100px;
-    width: 100px;
-    background-color: #20212C;
-    color: white;
+.tasks-list, #new-tasks-list-button{
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.add-task-btn, .edit-task-list-btn, .tasks-list{
+    color: var(--primary-text-color);
+}
+
+.tasks-list, #new-tasks-list-button, .add-task-btn, .edit-task-list-btn{
+    font-size: 20px;
+}
+
+.tasks-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-bg-color);
+    height: 58px;
+    width: 375px;
+    border-radius: 15px;
+    padding: 0 22px;
+}
+
+.tasks-list-nav{
+    display: flex;
+    gap: 12px;
+}
+
+#new-tasks-list-button{
+    background-color: #ffffff;
+    color: var(--secondary-bg-color);
+    height: 36px;
+    width: 136px;
+    border: none;
+    border-radius: 20px;
+}
+
+.add-task-btn, .edit-task-list-btn{
+    height: 30px;
+    width: 30px;
+    background-color: var(--secondary-bg-color);
+    border: 3px solid var(--primary-text-color);
+    border-radius: 5px;
+}
+.edit-task-list-btn{
+    width: 65px;
 }

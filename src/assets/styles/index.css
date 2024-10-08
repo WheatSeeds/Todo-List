@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+:root{
+    --primary-bg-color: #17181F;
+    --secondary-bg-color: #20212C;
+    --primary-text-color: #E5E5E5;
+    --secondary-text-color: #20212C;
+}
 body{
-    background-color: #17181F;
+    background-color: var(--primary-bg-color);
 }
