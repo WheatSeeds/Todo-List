@@ -1,26 +1,7 @@
-import taskList from './createTasksList';
 import '../styles/taskList.css';
-import Task from "./createTask";
+import {tasksList, createTasksList} from "./createTasksList";
 
 const taskLists = [];
-
-class createTasksListBlock{
-    static createTaskList(newTaskList){
-        const tasksList = document.createElement('div');
-        tasksList.setAttribute('class', 'task-list');
-        tasksList.append(this.createBtn(newTaskList));
-        document.body.appendChild(tasksList);
-    }
-    static createBtn(newTaskList){
-        const btn = document.createElement('button');
-        btn.innerText = 'Add Task';
-        btn.onclick = () => {
-            const newTask = new Task('name', '2', '3', '4');
-            newTaskList.addTask(newTask);
-        }
-        return btn;
-    }
-}
 
 class createTasksListBtn{
     static createBtn(){
@@ -33,12 +14,10 @@ class createTasksListBtn{
         document.body.appendChild(btn);
     }
     static createNewTaskList(){
-        const newTaskList = new taskList('name');
-        createTasksListBlock.createTaskList(newTaskList);
-        taskLists.push(newTaskList);
+        createTasksList.tasksListTemplate();
     }
 }
 
 createTasksListBtn.createBtn();
 
-export {createTasksListBtn};
+export {createTasksListBtn, taskLists};
