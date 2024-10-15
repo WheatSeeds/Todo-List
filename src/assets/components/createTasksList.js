@@ -8,11 +8,24 @@ class tasksList{
         this.name = name;
         this.tasks = [];
     }
-    addTask(newTask){
-        this.tasks.push(newTask);
+
+    addTask(task){
+        this.tasks.push(task);
     }
-    editTaskName(newTaskListName) {
+
+    removeTask(task){
+        this.tasks.pop(task);
+    }
+
+    editTaskListName(newTaskListName) {
         this.name = newTaskListName;
+    }
+
+    renderTasks(elem){
+        elem.innerHTML = "";
+        this.tasks.forEach(() => {
+            elem.appendChild(createTask.taskTemplate());
+        })
     }
 }
 
@@ -21,7 +34,9 @@ class createTasksList{
         const tasksListTemplate = createHtmlElement('div', null, 'tasks-list');
 
         const newTasksList = new tasksList(' ');
+
         taskLists.push(newTasksList);
+
         this.editTasksList(tasksListTemplate, newTasksList);
 
         document.body.appendChild(tasksListTemplate);
@@ -33,7 +48,7 @@ class createTasksList{
         submitBtn.textContent = 'Done';
 
         submitBtn.onclick = () => {
-            newTasksList.editTaskName(nameInput.value);
+            newTasksList.editTaskListName(nameInput.value);
             tasksListTemplate.innerHTML = '';
             this.tasksListContent(nameInput.value, tasksListTemplate, newTasksList);
         };
@@ -57,19 +72,13 @@ class createTasksList{
         tasksListNav.appendChild(this.createTaskBtn(newTasksList));
         tasksListNav.appendChild(this.createEditBtn(tasksListTemplate, newTasksList));
 
-        tasksListTemplate.onclick = () => {
-            newTasksList.tasks.forEach((task) => {
-                document.body.appendChild(createTask.taskTemplate());
-            })
-        }
     }
 
     static createTaskBtn(currentTasksList){
         const btn = createHtmlElement('button', null, 'add-task-btn');
         btn.innerText = '+';
         btn.onclick = () => {
-            const newTask = new Task('test-task', 'test', 'test', 'test');
-            currentTasksList.addTask(newTask);
+            document.body.appendChild(createTask.taskTemplate());
         }
         return btn;
     }
@@ -84,6 +93,7 @@ class createTasksList{
         return btn;
     }
 }
+
 
 
 export {tasksList, createTasksList};
